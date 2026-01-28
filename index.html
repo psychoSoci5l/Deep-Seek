@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiat Invaders 2.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#F7931A">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+    
+    <canvas id="gameCanvas"></canvas>
+    
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="screen active">
+        <h1 class="neon-title">FIAT INVADERS</h1>
+        <div class="subtitle">REWRITE v2.0</div>
+        <div class="loading-bar">
+            <div class="progress" id="loadingProgress"></div>
+        </div>
+        <div id="loadingText">Loading...</div>
+    </div>
+    
+    <!-- Main Menu -->
+    <div id="mainMenu" class="screen">
+        <h1 class="neon-title">FIAT<br>INVADERS</h1>
+        <div class="subtitle">PANIC SELLING UPDATE</div>
+        <button class="btn-coin" onclick="startGame()">INSERT COIN</button>
+        <div class="highscore">HIGH SCORE: <span id="highScore">0</span></div>
+        <div class="menu-options">
+            <button class="btn-icon" onclick="toggleSound()">🔊</button>
+            <button class="btn-icon" onclick="toggleBearMode()">🐻</button>
+        </div>
+    </div>
+    
+    <!-- Game HUD -->
+    <div id="gameHUD" class="screen">
+        <div class="hud-top">
+            <div class="hud-score">SCORE: <span id="score">0</span></div>
+            <div class="hud-level">LEVEL: <span id="level">1</span></div>
+        </div>
+        <div class="hud-bottom">
+            <div class="health">
+                <div class="health-bar" id="healthBar"></div>
+                <div class="health-label">HP</div>
+            </div>
+            <div class="weapon">
+                <span id="weaponIcon">○</span>
+                <span id="weaponName">NORMAL</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Game Over -->
+    <div id="gameOver" class="screen">
+        <h1 class="glitch">REKT</h1>
+        <div class="final-score">SCORE: <span id="finalScore">0</span></div>
+        <button class="btn-coin" onclick="backToMenu()">BUY THE DIP</button>
+    </div>
+
+    <script src="game.js"></script>
+    <script>
+        // Simple bootstrapper
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.remove('active');
+                document.getElementById('mainMenu').classList.add('active');
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
